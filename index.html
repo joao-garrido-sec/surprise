@@ -6,227 +6,364 @@
   <title>A Very Important Matter</title>
 
   <style>
-    :root {
-      --bg: #f5f1e8;
-      --ink: #252a25;
-      --accent: #D9826B;
-      --orange: #d89a52;
-      --card: #fffdf8;
-    }
+:root {
+  --bg: #f5f1e8;
+  --ink: #252a25;
+  --accent: #D9826B;
+  --orange: #d89a52;
+  --card: #fffdf8;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
 
-      color: var(--ink);
+body {
+  margin: 0;
+  min-height: 100vh;
 
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          #ead7cf 0 10%,
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 90% 90%,
-          #f1dfc4 0 8%,
-          transparent 25%
-        ),
-        var(--bg);
+  display: grid;
+  place-items: center;
 
-      overflow: hidden;
-    }
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
 
-    .wrap {
-      width: min(680px, 92vw);
-      text-align: center;
-      position: relative;
-    }
+  color: var(--ink);
 
-    .card {
-      background: rgba(255, 255, 255, 0.92);
-      border: 3px solid var(--ink);
-      border-radius: 28px;
-      padding: 42px 30px 34px;
-      box-shadow: 10px 10px 0 var(--ink);
-      position: relative;
-    }
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      #ead7cf 0 10%,
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      #f1dfc4 0 8%,
+      transparent 25%
+    ),
+    var(--bg);
 
-    .badge {
-      display: inline-block;
-      background: var(--ink);
-      color: white;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      transform: rotate(-2deg);
-      margin-bottom: 18px;
-    }
+  overflow-x: hidden;
+  overflow-y: auto;
 
-    .stamp {
-      position: absolute;
-      right: -20px;
-      top: -22px;
+  -webkit-text-size-adjust: 100%;
+}
 
-      background: var(--accent);
-      border: 3px solid var(--ink);
-      padding: 12px;
-      border-radius: 14px;
+.wrap {
+  width: min(680px, 92vw);
+  text-align: center;
+  position: relative;
+}
 
-      font-weight: 900;
-      transform: rotate(7deg);
+.card {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid var(--ink);
+  border-radius: 28px;
+  padding: 42px 30px 34px;
 
-      box-shadow: 5px 5px 0 var(--ink);
-    }
+  box-shadow: 10px 10px 0 var(--ink);
 
-    h1 {
-      font-size: clamp(38px, 8vw, 68px);
-      line-height: 0.95;
-      margin: 0 0 18px;
-      letter-spacing: -0.055em;
-    }
+  position: relative;
+}
 
-    .highlight {
-      color: var(--accent);
-    }
+.badge {
+  display: inline-block;
 
-    .sub {
-      font-size: 18px;
-      line-height: 1.5;
-      max-width: 530px;
-      margin: 0 auto 22px;
-    }
+  background: var(--ink);
+  color: white;
 
-    .evidence {
-      margin: 25px auto;
-      max-width: 480px;
-      border: 2px solid var(--ink);
-      border-radius: 16px;
-      overflow: hidden;
-      text-align: left;
-      background: var(--card);
-    }
+  padding: 8px 14px;
+  border-radius: 999px;
 
-    .evidence-title {
-      background: var(--ink);
-      color: white;
-      padding: 9px 14px;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 0.08em;
-      text-align: center;
-    }
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
 
-    .row {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 10px 14px;
-      border-bottom: 1px solid #ddd8ce;
-      font-size: 14px;
-    }
+  transform: rotate(-2deg);
 
-    .row:last-child {
-      border-bottom: 0;
-    }
+  margin-bottom: 18px;
+}
 
-    .result-value {
-      font-weight: 800;
-      text-align: right;
-    }
+.stamp {
+  position: absolute;
 
-    .trip {
-      font-size: 15px;
-      opacity: 0.72;
-      margin: 22px auto 25px;
-      max-width: 500px;
-    }
+  right: -20px;
+  top: -22px;
 
-    .buttons {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  background: var(--accent);
 
-    button {
-      border: 3px solid var(--ink);
-      border-radius: 16px;
-      padding: 15px 22px;
+  border: 3px solid var(--ink);
+  padding: 12px;
 
-      font-size: 16px;
-      font-weight: 900;
+  border-radius: 14px;
 
-      cursor: pointer;
-      background: var(--accent);
+  font-weight: 900;
 
-      box-shadow: 5px 5px 0 var(--ink);
+  transform: rotate(7deg);
 
-      transition:
-        0.12s transform,
-        0.12s box-shadow;
-    }
+  box-shadow: 5px 5px 0 var(--ink);
 
-    button:hover {
-      transform: translate(2px, 2px);
-      box-shadow: 3px 3px 0 var(--ink);
-    }
+  z-index: 2;
+}
 
-    button:active {
-      transform: translate(5px, 5px);
-      box-shadow: 0 0 0 var(--ink);
-    }
+h1 {
+  font-size: clamp(38px, 8vw, 68px);
+  line-height: 0.95;
 
-    #nope {
-      background: #eeeae3;
-    }
+  margin: 0 0 18px;
 
-    .tiny {
-      margin-top: 25px;
-      font-size: 12px;
-      opacity: 0.55;
-    }
+  letter-spacing: -0.055em;
+}
 
-    .result {
-      display: none;
-      margin-top: 24px;
-      font-weight: 800;
-      font-size: 20px;
-    }
+.highlight {
+  color: var(--accent);
+}
 
-    .result.show {
-      display: block;
-    }
+.sub {
+  font-size: 18px;
+  line-height: 1.5;
 
-    @media (max-width: 520px) {
-      .card {
-        padding: 34px 20px 28px;
-      }
+  max-width: 530px;
 
-      .stamp {
-        right: -8px;
-        top: -35px;
-      }
+  margin: 0 auto 22px;
+}
 
-      .row {
-        font-size: 13px;
-      }
-    }
+.evidence {
+  margin: 25px auto;
+
+  max-width: 480px;
+
+  border: 2px solid var(--ink);
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  text-align: left;
+
+  background: var(--card);
+}
+
+.evidence-title {
+  background: var(--ink);
+  color: white;
+
+  padding: 9px 14px;
+
+  font-size: 12px;
+  font-weight: 900;
+
+  letter-spacing: 0.08em;
+
+  text-align: center;
+}
+
+.row {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 10px 14px;
+
+  border-bottom: 1px solid #ddd8ce;
+
+  font-size: 14px;
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.result-value {
+  font-weight: 800;
+  text-align: right;
+}
+
+.trip {
+  font-size: 15px;
+  opacity: 0.72;
+
+  margin: 22px auto 25px;
+
+  max-width: 500px;
+}
+
+.buttons {
+  display: flex;
+
+  gap: 14px;
+
+  justify-content: center;
+
+  flex-wrap: wrap;
+}
+
+button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  -webkit-tap-highlight-color: transparent;
+
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+
+  padding: 15px 22px;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: normal;
+
+  cursor: pointer;
+
+  background: var(--accent);
+  color: var(--ink);
+
+  box-shadow: 5px 5px 0 var(--ink);
+
+  transition:
+    0.12s transform,
+    0.12s box-shadow;
+
+  text-decoration: none;
+}
+
+button:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+button:active {
+  transform: translate(5px, 5px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+#nope {
+  background: #eeeae3;
+  color: var(--ink);
+}
+
+.tiny {
+  margin-top: 25px;
+
+  font-size: 12px;
+
+  opacity: 0.55;
+}
+
+.result {
+  display: none;
+
+  margin-top: 24px;
+
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.result.show {
+  display: block;
+}
+
+@media (max-width: 520px) {
+
+  body {
+    display: block;
+
+    padding: 45px 0 30px;
+  }
+
+  .wrap {
+    width: 92vw;
+    margin: 0 auto;
+  }
+
+  .card {
+    padding: 48px 20px 28px;
+
+    border-radius: 24px;
+
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .stamp {
+    right: 12px;
+    top: 12px;
+
+    font-size: 11px;
+
+    padding: 9px 10px;
+
+    border-width: 2px;
+
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  h1 {
+    font-size: clamp(40px, 12vw, 56px);
+
+    margin-bottom: 18px;
+  }
+
+  .sub {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .evidence {
+    margin-top: 22px;
+    margin-bottom: 22px;
+  }
+
+  .row {
+    font-size: 13px;
+
+    gap: 12px;
+
+    padding: 10px 12px;
+  }
+
+  .result-value {
+    max-width: 58%;
+  }
+
+  .trip {
+    font-size: 14px;
+
+    margin-top: 20px;
+    margin-bottom: 22px;
+  }
+
+  .buttons {
+    gap: 12px;
+  }
+
+  button {
+    width: 100%;
+
+    padding: 14px 18px;
+
+    font-size: 15px;
+  }
+
+  .tiny {
+    margin-top: 22px;
+
+    font-size: 11px;
+    line-height: 1.5;
+  }
+}
   </style>
 </head>
 <body>
