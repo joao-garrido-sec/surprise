@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Important Third Date Business</title>
+  <title>A Very Important Matter</title>
 
   <style>
     :root {
@@ -109,13 +109,52 @@
       font-size: 18px;
       line-height: 1.5;
       max-width: 530px;
-      margin: 0 auto 28px;
+      margin: 0 auto 22px;
+    }
+
+    .evidence {
+      margin: 25px auto;
+      max-width: 480px;
+      border: 2px solid var(--ink);
+      border-radius: 16px;
+      overflow: hidden;
+      text-align: left;
+      background: var(--card);
+    }
+
+    .evidence-title {
+      background: var(--ink);
+      color: white;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 14px;
+      border-bottom: 1px solid #ddd8ce;
+      font-size: 14px;
+    }
+
+    .row:last-child {
+      border-bottom: 0;
+    }
+
+    .result-value {
+      font-weight: 800;
+      text-align: right;
     }
 
     .trip {
       font-size: 15px;
       opacity: 0.72;
-      margin-bottom: 25px;
+      margin: 22px auto 25px;
+      max-width: 500px;
     }
 
     .buttons {
@@ -183,59 +222,117 @@
         right: -8px;
         top: -35px;
       }
+
+      .row {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 <body>
+
   <main class="wrap">
     <section class="card">
+
       <div class="stamp">
         VERY SERIOUS
       </div>
-      <div class="badge">
-        OFFICIAL DATE PROPOSAL
-      </div>
+
       <h1>
-        So...
+        Sooo Rita...
+        <br>
         <span class="highlight">third date?</span>
       </h1>
+
       <p class="sub">
-        Hopefully you had an excellent trip and returned safely to civilisation.
-        I was thinking we should probably continue our extremely successful
-        research into whether we actually enjoy hanging out.
+        Welcome back from <strong>Italy</strong>.
+        Hopefully the trip was excellent and you've safely
+        returned to civilisation.
       </p>
+
+      <p class="sub">
+        Following the highly successful trials conducted during
+        dates one and two, I believe further investigation is necessary.
+      </p>
+
+      <div class="evidence">
+
+        <div class="evidence-title">
+          CURRENT RESEARCH FINDINGS
+        </div>
+
+        <div class="row">
+          <span>Date one</span>
+          <span class="result-value">Pretty good, apparently</span>
+        </div>
+
+        <div class="row">
+          <span>Date two</span>
+          <span class="result-value">Also suspiciously good</span>
+        </div>
+        
+        <div class="row">
+          <span>Wanting to do it again</span>
+          <span class="result-value">Looking increasingly likely</span>
+        </div>
+
+        <div class="row">
+          <span>Rita turning 30</span>
+          <span class="result-value">Unexpectedly exciting... if done with me</span>
+        </div>
+
+      </div>
+
       <p class="trip">
-        Early findings are promising. The scientists recommend further testing.
+        Early findings are promising.
+  The scientists therefore recommend one additional trial,
+  with a lot of laughing and good fun.
       </p>
+
       <div class="buttons">
+
         <button id="yes">
           Obviously. Book it.
         </button>
+
         <button id="nope">
           I need to think
         </button>
+
       </div>
+
       <div id="result" class="result"></div>
+
       <div class="tiny">
         No pressure. Except this website took me time to make.
+        <br>
+         Sorry for being a nerd. I thought this would be funny.
       </div>
+
     </section>
   </main>
 
+
   <script>
+
     const NOTIFY_ENDPOINT = "https://formspree.io/f/mzeborqa";
+
     const result = document.getElementById("result");
     const yes = document.getElementById("yes");
     const nope = document.getElementById("nope");
 
+
     async function notify(choice) {
+
       if (!NOTIFY_ENDPOINT) {
-         return;
+        return;
       }
 
       try {
+
         await fetch(NOTIFY_ENDPOINT, {
           method: "POST",
+
           headers: {
             "Content-Type": "application/json",
             "Accept": "application/json"
@@ -253,11 +350,17 @@
       }
     }
 
+
     yes.addEventListener("click", async () => {
-      result.textContent = "Excellent. This is objectively the correct decision.";
+
+      result.textContent =
+        "Excellent. I knew you had good judgement.";
+
       result.classList.add("show");
+
       yes.remove();
       nope.remove();
+
       await notify("yes");
 
       document.body.animate(
@@ -271,16 +374,25 @@
           duration: 500
         }
       );
+
     });
 
+
     nope.addEventListener("click", async () => {
-      result.textContent = "That's okay. I respect the dramatic suspense.";
+
+      result.textContent =
+        "That's okay. I'll allow you some time to review the evidence.";
+
       result.classList.add("show");
+
       yes.remove();
       nope.remove();
+
       await notify("thinking");
+
     });
 
   </script>
+
 </body>
 </html>
